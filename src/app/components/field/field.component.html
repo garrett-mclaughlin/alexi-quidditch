@@ -1,0 +1,146 @@
+<app-chaser
+  *ngIf="chaser1AIsOnBroom"
+  #chaser1A
+  id="chaser1A"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('chaser1A')"
+  (takingShot)="takingShot('chaser1A')"
+></app-chaser>
+<app-chaser
+  *ngIf="chaser1BIsOnBroom"
+  #chaser1B
+  id="chaser1B"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('chaser1B')"
+  (takingShot)="takingShot('chaser1B')"
+></app-chaser>
+<app-chaser
+  *ngIf="chaser1CIsOnBroom"
+  #chaser1C
+  id="chaser1C"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('chaser1C')"
+  (takingShot)="takingShot('chaser1C')"
+></app-chaser>
+<app-chaser
+  *ngIf="chaser2AIsOnBroom"
+  #chaser2A
+  id="chaser2A"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('chaser2A')"
+  (takingShot)="takingShot('chaser2A')"
+></app-chaser>
+<app-chaser
+  *ngIf="chaser2BIsOnBroom"
+  #chaser2B
+  id="chaser2B"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('chaser2B')"
+  (takingShot)="takingShot('chaser2B')"
+></app-chaser>
+<app-chaser
+  *ngIf="chaser2CIsOnBroom"
+  #chaser2C
+  id="chaser2C"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('chaser2C')"
+  (takingShot)="takingShot('chaser2C')"
+></app-chaser>
+<app-beater
+  *ngIf="beater1AIsOnBroom"
+  #beater1A
+  id="beater1A"
+  (savePlayer)="savePlayer($event, 'beater1A')"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('beater1A')"
+  [players]="players"
+></app-beater>
+<app-beater
+  *ngIf="beater1BIsOnBroom"
+  #beater1B
+  id="beater1B"
+  (savePlayer)="savePlayer($event, 'beater1B')"
+  (fallenOffBroom)="fall('beater1B')"
+  [protectedFromBludger]="false"
+  [players]="players"
+></app-beater>
+<app-beater
+  *ngIf="beater2AIsOnBroom"
+  #beater2A
+  id="beater2A"
+  (savePlayer)="savePlayer($event, 'beater2A')"
+  (fallenOffBroom)="fall('beater2A')"
+  [protectedFromBludger]="false"
+  [players]="players"
+></app-beater>
+<app-beater
+  *ngIf="beater2BIsOnBroom"
+  #beater2B
+  id="beater2B"
+  (savePlayer)="savePlayer($event, 'beater2B')"
+  (fallenOffBroom)="fall('beater2B')"
+  [protectedFromBludger]="false"
+  [players]="players"
+></app-beater>
+<app-seeker
+  *ngIf="seeker1IsOnBroom"
+  #seeker1
+  id="seeker1"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('seeker1')"
+></app-seeker>
+<app-seeker
+  *ngIf="seeker2IsOnBroom"
+  #seeker2
+  id="seeker2"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('seeker2')"
+></app-seeker>
+<app-keeper
+  *ngIf="keeper1IsOnBroom"
+  #keeper1
+  id="keeper1"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('keeper1')"
+  (blockingShot)="blockingShot('keeper1')"
+></app-keeper>
+<app-keeper
+  *ngIf="keeper2IsOnBroom"
+  #keeper2
+  id="keeper2"
+  [protectedFromBludger]="false"
+  (fallenOffBroom)="fall('keeper2')"
+  (blockingShot)="blockingShot('keeper2')"
+></app-keeper>
+<app-goal
+  #goal1
+  id="goal1"
+  (shotBlocked)="shotBlocked('goal1')"
+  (goalScored)="goalScored('goal1')"
+></app-goal>
+<app-goal
+  #goal2
+  id="goal2"
+  (shotBlocked)="shotBlocked('goal2')"
+  (goalScored)="goalScored('goal2')"
+></app-goal>
+
+<app-quaffle
+  #quaffle
+  id="quaffle"
+  (giveQuaffle)="giveQuaffle($event)"
+  [players]="players"
+></app-quaffle>
+<app-bludger
+  #bludger1
+  id="bludger1"
+  (attackPlayer)="bludgerEvent($event)"
+  [players]="players"
+></app-bludger>
+<app-bludger
+  #bludger2
+  id="bludger2"
+  (attackPlayer)="bludgerEvent($event)"
+  [players]="players"
+></app-bludger>
+<app-snitch #snitch id="snitch"></app-snitch>
