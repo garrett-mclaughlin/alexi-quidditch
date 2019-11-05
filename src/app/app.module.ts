@@ -12,6 +12,7 @@ import { SnitchComponent } from './components/snitch/snitch.component';
 import { GoalComponent } from './components/goal/goal.component';
 import { FieldComponent } from './components/field/field.component';
 import { KeeperComponent } from './components/keeper/keeper.component';
+import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { KeeperComponent } from './components/keeper/keeper.component';
     SnitchComponent,
     GoalComponent,
     FieldComponent,
-    KeeperComponent
+    KeeperComponent,
+    ScoreboardComponent
   ],
   imports: [
     BrowserModule,

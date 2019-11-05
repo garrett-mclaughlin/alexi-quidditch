@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-chaser',
@@ -6,8 +6,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./chaser.component.css']
 })
 export class ChaserComponent implements OnInit {
-  @Input()
   public protectedFromBludger = false;
+
+  hasQuaffle = false;
 
   @Output()
   fallenOffBroom = new EventEmitter();
@@ -20,7 +21,9 @@ export class ChaserComponent implements OnInit {
   ngOnInit() {}
 
   public takeShot() {
+    this.hasQuaffle = true;
     this.takingShot.emit();
+    setTimeout(() => (this.hasQuaffle = false), 2000);
   }
 
   async fallCheck() {

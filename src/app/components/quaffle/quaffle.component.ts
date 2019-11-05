@@ -32,7 +32,7 @@ export class QuaffleComponent implements AfterViewInit {
       Math.floor(Math.random() * this.chasers.length)
     ];
     // send quaffle
-    const delay = Math.random() * 3000;
+    const delay = Math.random() * 1000 + 2000;
     await new Promise(resolve => setTimeout(resolve, delay));
 
     this.giveQuaffle.emit(random);

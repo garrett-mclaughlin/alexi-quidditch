@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./beater.component.css']
 })
 export class BeaterComponent implements OnInit {
-  @Input()
   public protectedFromBludger = false;
 
   @Input()

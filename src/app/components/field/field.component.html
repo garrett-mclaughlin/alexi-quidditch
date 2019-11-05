@@ -1,57 +1,108 @@
-<app-chaser
-  *ngIf="chaser1AIsOnBroom"
-  #chaser1A
-  id="chaser1A"
-  [protectedFromBludger]="false"
-  (fallenOffBroom)="fall('chaser1A')"
-  (takingShot)="takingShot('chaser1A')"
-></app-chaser>
-<app-chaser
-  *ngIf="chaser1BIsOnBroom"
-  #chaser1B
-  id="chaser1B"
-  [protectedFromBludger]="false"
-  (fallenOffBroom)="fall('chaser1B')"
-  (takingShot)="takingShot('chaser1B')"
-></app-chaser>
-<app-chaser
-  *ngIf="chaser1CIsOnBroom"
-  #chaser1C
-  id="chaser1C"
-  [protectedFromBludger]="false"
-  (fallenOffBroom)="fall('chaser1C')"
-  (takingShot)="takingShot('chaser1C')"
-></app-chaser>
-<app-chaser
-  *ngIf="chaser2AIsOnBroom"
-  #chaser2A
-  id="chaser2A"
-  [protectedFromBludger]="false"
-  (fallenOffBroom)="fall('chaser2A')"
-  (takingShot)="takingShot('chaser2A')"
-></app-chaser>
-<app-chaser
-  *ngIf="chaser2BIsOnBroom"
-  #chaser2B
-  id="chaser2B"
-  [protectedFromBludger]="false"
-  (fallenOffBroom)="fall('chaser2B')"
-  (takingShot)="takingShot('chaser2B')"
-></app-chaser>
-<app-chaser
-  *ngIf="chaser2CIsOnBroom"
-  #chaser2C
-  id="chaser2C"
-  [protectedFromBludger]="false"
-  (fallenOffBroom)="fall('chaser2C')"
-  (takingShot)="takingShot('chaser2C')"
-></app-chaser>
+<app-scoreboard
+  [team1points]="team1points"
+  [team2points]="team2points"
+></app-scoreboard>
+<div class="field">
+  <div class="goal flex-col">
+    <app-goal
+      #goal1
+      id="goal1"
+      (shotBlocked)="shotBlocked('goal1')"
+      (goalScored)="goalScored('goal1')"
+      style="transform: scaleX(-1)"
+    ></app-goal>
+  </div>
+  <div class="keeper flex-col">
+    <app-keeper
+      *ngIf="keeper1IsOnBroom"
+      #keeper1
+      id="keeper1"
+      (fallenOffBroom)="fall('keeper1')"
+      (blockingShot)="blockingShot('keeper1')"
+    ></app-keeper>
+  </div>
+  <div class="seeker flex-col">
+    c
+  </div>
+  <div class="beaters flex-col">
+    d
+  </div>
+  <div class="chasers flex-col">
+    <app-chaser
+      *ngIf="chaser1AIsOnBroom"
+      #chaser1A
+      id="chaser1A"
+      (fallenOffBroom)="fall('chaser1A')"
+      (takingShot)="takingShot('chaser1A')"
+    ></app-chaser>
+    <app-chaser
+      *ngIf="chaser1BIsOnBroom"
+      #chaser1B
+      id="chaser1B"
+      (fallenOffBroom)="fall('chaser1B')"
+      (takingShot)="takingShot('chaser1B')"
+    ></app-chaser>
+    <app-chaser
+      *ngIf="chaser1CIsOnBroom"
+      #chaser1C
+      id="chaser1C"
+      (fallenOffBroom)="fall('chaser1C')"
+      (takingShot)="takingShot('chaser1C')"
+    ></app-chaser>
+  </div>
+  <div class="chasers flex-col">
+    <app-chaser
+      *ngIf="chaser2AIsOnBroom"
+      #chaser2A
+      id="chaser2A"
+      (fallenOffBroom)="fall('chaser2A')"
+      (takingShot)="takingShot('chaser2A')"
+    ></app-chaser>
+    <app-chaser
+      *ngIf="chaser2BIsOnBroom"
+      #chaser2B
+      id="chaser2B"
+      (fallenOffBroom)="fall('chaser2B')"
+      (takingShot)="takingShot('chaser2B')"
+    ></app-chaser>
+    <app-chaser
+      *ngIf="chaser2CIsOnBroom"
+      #chaser2C
+      id="chaser2C"
+      (fallenOffBroom)="fall('chaser2C')"
+      (takingShot)="takingShot('chaser2C')"
+    ></app-chaser>
+  </div>
+  <div class="beaters flex-col">
+    g
+  </div>
+  <div class="seeker flex-col">
+    h
+  </div>
+  <div class="keeper flex-col">
+    <app-keeper
+      *ngIf="keeper2IsOnBroom"
+      #keeper2
+      id="keeper2"
+      (fallenOffBroom)="fall('keeper2')"
+      (blockingShot)="blockingShot('keeper2')"
+    ></app-keeper>
+  </div>
+  <div class="goal flex-col">
+    <app-goal
+      #goal2
+      id="goal2"
+      (shotBlocked)="shotBlocked('goal2')"
+      (goalScored)="goalScored('goal2')"
+    ></app-goal>
+  </div>
+</div>
+
 <app-beater
   *ngIf="beater1AIsOnBroom"
   #beater1A
   id="beater1A"
   (savePlayer)="savePlayer($event, 'beater1A')"
-  [protectedFromBludger]="false"
   (fallenOffBroom)="fall('beater1A')"
   [players]="players"
 ></app-beater>
@@ -61,7 +112,6 @@
   id="beater1B"
   (savePlayer)="savePlayer($event, 'beater1B')"
   (fallenOffBroom)="fall('beater1B')"
-  [protectedFromBludger]="false"
   [players]="players"
 ></app-beater>
 <app-beater
@@ -70,7 +120,6 @@
   id="beater2A"
   (savePlayer)="savePlayer($event, 'beater2A')"
   (fallenOffBroom)="fall('beater2A')"
-  [protectedFromBludger]="false"
   [players]="players"
 ></app-beater>
 <app-beater
@@ -79,68 +128,42 @@
   id="beater2B"
   (savePlayer)="savePlayer($event, 'beater2B')"
   (fallenOffBroom)="fall('beater2B')"
-  [protectedFromBludger]="false"
   [players]="players"
 ></app-beater>
 <app-seeker
   *ngIf="seeker1IsOnBroom"
   #seeker1
   id="seeker1"
-  [protectedFromBludger]="false"
   (fallenOffBroom)="fall('seeker1')"
 ></app-seeker>
 <app-seeker
   *ngIf="seeker2IsOnBroom"
   #seeker2
   id="seeker2"
-  [protectedFromBludger]="false"
   (fallenOffBroom)="fall('seeker2')"
 ></app-seeker>
-<app-keeper
-  *ngIf="keeper1IsOnBroom"
-  #keeper1
-  id="keeper1"
-  [protectedFromBludger]="false"
-  (fallenOffBroom)="fall('keeper1')"
-  (blockingShot)="blockingShot('keeper1')"
-></app-keeper>
-<app-keeper
-  *ngIf="keeper2IsOnBroom"
-  #keeper2
-  id="keeper2"
-  [protectedFromBludger]="false"
-  (fallenOffBroom)="fall('keeper2')"
-  (blockingShot)="blockingShot('keeper2')"
-></app-keeper>
-<app-goal
-  #goal1
-  id="goal1"
-  (shotBlocked)="shotBlocked('goal1')"
-  (goalScored)="goalScored('goal1')"
-></app-goal>
-<app-goal
-  #goal2
-  id="goal2"
-  (shotBlocked)="shotBlocked('goal2')"
-  (goalScored)="goalScored('goal2')"
-></app-goal>
 
 <app-quaffle
+  *ngIf="gameInProgress"
   #quaffle
   id="quaffle"
   (giveQuaffle)="giveQuaffle($event)"
   [players]="players"
 ></app-quaffle>
 <app-bludger
+  *ngIf="gameInProgress"
   #bludger1
   id="bludger1"
   (attackPlayer)="bludgerEvent($event)"
   [players]="players"
 ></app-bludger>
 <app-bludger
+  *ngIf="gameInProgress"
   #bludger2
   id="bludger2"
   (attackPlayer)="bludgerEvent($event)"
   [players]="players"
 ></app-bludger>
-<app-snitch #snitch id="snitch"></app-snitch>
+<app-snitch *ngIf="gameInProgress" #snitch id="snitch"></app-snitch>
+<p>Team 1: {{ team1points }}</p>
+<p>Team 2: {{ team2points }}</p>

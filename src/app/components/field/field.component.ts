@@ -16,6 +16,8 @@ import { SnitchComponent } from '../snitch/snitch.component';
 export class FieldComponent implements OnInit {
   constructor() {}
 
+  gameInProgress = true;
+
   @ViewChild('chaser1A', { static: false }) chaser1A: ChaserComponent;
   @ViewChild('chaser1B', { static: false }) chaser1B: ChaserComponent;
   @ViewChild('chaser1C', { static: false }) chaser1C: ChaserComponent;
@@ -68,6 +70,9 @@ export class FieldComponent implements OnInit {
   seeker2IsOnBroom = true;
   keeper1IsOnBroom = true;
   keeper2IsOnBroom = true;
+
+  team1points = 0;
+  team2points = 0;
   ngOnInit() {}
 
   selectComponent(thing: string) {
@@ -107,12 +112,18 @@ export class FieldComponent implements OnInit {
 
   bludgerEvent(player: string) {
     const hitPlayer = this.selectComponent(player);
+    if (!hitPlayer) {
+      return;
+    }
     hitPlayer.fallCheck();
     console.log('bludger hit at ' + player);
   }
 
   savePlayer(player: string, beater: string) {
     const savedPlayer = this.selectComponent(player) as any;
+    if (!savedPlayer) {
+      return;
+    }
     savedPlayer.protectedFromBludger = true;
     console.log(`${beater} is trying to save ${player}`);
   }
@@ -170,12 +181,16 @@ export class FieldComponent implements OnInit {
         break;
     }
     this.players = this.players.filter(p => p !== player);
+    if (!this.players.length) {
+      this.gameInProgress = false;
+    }
   }
 
   giveQuaffle(player: string) {
-    console.log(`Quaffle to ${player}`);
     const chaser = this.selectComponent(player) as ChaserComponent;
+    if (!chaser) { return; }
     chaser.takeShot();
+    console.log(`Quaffle to ${player}`);
   }
 
   takingShot(player: string) {
@@ -203,8 +218,10 @@ export class FieldComponent implements OnInit {
   goalScored(goal: string) {
     if (goal.includes('1')) {
       console.log(`Goal made at ${goal}, 10 points for Team 1`);
+      this.team1points += 10;
     } else {
       console.log(`Goal made at ${goal}, 10 points for Team 2`);
+      this.team2points += 10;
     }
   }
 }
